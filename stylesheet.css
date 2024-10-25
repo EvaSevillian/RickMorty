@@ -1,0 +1,8 @@
+
+.ul {
+    list-style: none;
+    display: flex; /* Make list items appear in a row */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line if they don’t fit */
+    gap: 10px; /* Space between items */
+    justify-content: center;
+}
