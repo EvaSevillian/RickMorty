@@ -4,7 +4,6 @@ const getDataFromApi = async () => {
     console.log (response);
     const dataFromApi = await response.json();
     console.log(dataFromApi)
-
     console.log(dataFromApi.results)
 
     dataFromApi.results.forEach(location => {
@@ -21,6 +20,13 @@ const createLocationCardInHtml = (locationInfo) => {
     buttonShowResidents.classList.add("location-button");
     buttonShowResidents.innerText = "Show Residents";
 
+    buttonShowResidents.addEventListener("click", (event) => {
+        const buttonId = event.target.id;
+        const planetButtonName = buttonId.split("button");
+        console.log(planetButtonName[0]);
+    });
+
+
     const locationNameTitle = document.createElement("h4");
     locationNameTitle.innerText = locationInfo.name;
     articleContainer.appendChild(locationNameTitle);
@@ -35,6 +41,12 @@ function addBackgroundImage() {
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundPosition = "center";
 }
+
+
+
+
+
+
 
 
 getDataFromApi();
