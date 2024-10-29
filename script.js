@@ -36,7 +36,7 @@ const createLocationCardInHtml = (locationInfo) => {
 
 
 function addBackgroundImage() {
-    document.body.style.backgroundImage = "url('https://wallpapers.com/images/high/dope-rick-and-morty-mood-xf18w6xojcosnn64.webp')"; // Use a direct link to an image file
+    document.body.style.backgroundImage = "url('https://wallpapercave.com/wp/wp2450670.png')"; 
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundPosition = "center";
