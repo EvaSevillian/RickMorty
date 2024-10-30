@@ -1,0 +1,61 @@
+
+#numberPage {
+    font-size: 16px;
+    font-weight: light;
+    border-radius: 1rem;
+    gap: .5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+    color: antiquewhite;
+    padding: 1rem;
+    font-size: 14px;
+}
+
+#prevButton, #nextButton { 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    font-size: 14px;
+    border: none;
+    border-radius: .5rem;
+    width: 100px; 
+    height: 25px; 
+    background-color: rgb(133, 194, 202); 
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.button__box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pagination-button:hover {
+    background-color: rgb(147, 177, 181);
+}
+
+.character__section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2em;
+}
+
+.character_card{
+
+    padding: 1em;
+    border-width: .5em;
+    border-radius: 1em;
+    border-color: white;
+    border-style: solid;
+}
+.character_card__image{
+    width: 100%;
+}
+.characer_card__text{
+    text-align: center;
+
+}

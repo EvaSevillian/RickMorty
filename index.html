@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="styles/stylesheet.css">
     <title>Rick & Morty Locations</title>
 </head>
 
 <body onload="addBackgroundImage()">
     <h1>Rick & Morty Locations</h1>
 
-<div id="page">
-    <button class="pagination-button">Previous</button>
-    <p class="page_number">Página 1</p>
-    <button class="pagination-button">Next</button>
-</div>
+    <div id="page"></div>
+    <div class="button__box">
+        <a id="prevButton">Previous</a>
+        <p class="button__box__number" id="numberPage">Página 1</p>
+        <a id="nextButton">Next</a>
+    </div>
+
+<section id="root" class="character__section">
+
+  
+</section>
 
 <article id="Text">
 
 </article>
 
-    <script src="script.js">
+    <script src="JS/characterList.js"></script>
+    <script src="JS/script.js"></script>
+
 
         
     </script>

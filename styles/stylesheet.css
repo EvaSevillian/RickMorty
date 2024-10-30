@@ -1,0 +1,96 @@
+h1 {
+  color: rgb(133, 194, 202);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 3em;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#Text {
+  color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 4rem;
+  padding-right: 14rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.location-button {
+  background-color: rgb(70, 148, 158);
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.location-button:hover {
+  background-color: rgb(147, 177, 181);
+}
+
+#numberPage {
+  font-size: 16px;
+  font-weight: light;
+  border-radius: 1rem;
+  gap: 0.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: antiquewhite;
+  padding: 1rem;
+  font-size: 14px;
+}
+
+#prevButton, #nextButton {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  font-size: 14px;
+  border: none;
+  border-radius: 0.5rem;
+  width: 100px;
+  height: 25px;
+  background-color: rgb(133, 194, 202);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-button:hover {
+  background-color: rgb(147, 177, 181);
+}
+
+.character__section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  -moz-column-gap: 2em;
+       column-gap: 2em;
+}
+
+.character_card {
+  padding: 1em;
+  border-width: 0.5em;
+  border-radius: 1em;
+  border-color: white;
+  border-style: solid;
+}
+
+.character_card__image {
+  width: 100%;
+}
+
+.characer_card__text {
+  text-align: center;
+}/*# sourceMappingURL=stylesheet.css.map */
