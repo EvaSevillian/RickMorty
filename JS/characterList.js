@@ -1,88 +1,55 @@
-const getCharacterListFromApi = async (URL_API) => {
-    const pageNumberText = document.getElementById("numberPage")
+const getResidentDataFromApi = async (url) => {
+    const response = await fetch(url);
+    return await response.json();
+};
 
-    const response = await fetch(URL_API)
-    if (response.ok){
-        const caracterInformationFromApi = await response.json()
-        console.log(caracterInformationFromApi.info.next)
-        if (caracterInformationFromApi.info.next != null){
-            buttonNextHtmlElement.href = caracterInformationFromApi.info.next
-        }
-        if (caracterInformationFromApi.info.prev != null){
-            buttonPrevHtmlElement.href = caracterInformationFromApi.info.prev
-        }
-        const nummberPage = URL_API.split("page=")[1]
-        if (nummberPage != undefined){
+const showResidentsPopup = async (locationInfo) => {
+    const popupContainer = document.createElement("div");
+    popupContainer.classList.add("popup-container");
 
-            pageNumberText.innerText = `Página ${nummberPage}`
-        }
-        caracterInformationFromApi.results.map((characterInformation, index)=>{
-            createCharacterCardInHtml(characterInformation)
-        })
+    const popupContent = document.createElement("div");
+    popupContent.classList.add("popup-content");
+
+    const closeButton = document.createElement("button");
+    closeButton.innerText = "Close";
+    closeButton.classList.add("close-button");
+    closeButton.addEventListener("click", () => {
+        document.body.removeChild(popupContainer);
+    });
+
+    const popupTitle = document.createElement("h3");
+    popupTitle.innerText = `Residents of ${locationInfo.name}`;
+    popupContent.appendChild(popupTitle);
+    popupContent.appendChild(closeButton);
+
+    for (let residentUrl of locationInfo.residents) {
+        const residentData = await getResidentDataFromApi(residentUrl);
+        const residentElement = createResidentElement(residentData);
+        popupContent.appendChild(residentElement);
     }
-    else {
-        alert("Problemas con la api")
-   }
-}
 
-const createCharacterCardInHtml = (characterInformation) => {
+    popupContainer.appendChild(popupContent);
+    document.body.appendChild(popupContainer);
 
-    const characterSection = document.getElementById("root")
-
-    const articleContainer = document.createElement("article")
-    const imageElement = document.createElement("img")
-    imageElement.src = characterInformation.image
-    const containerForText = document.createElement("div")
-    const NameCharacterTitle = document.createElement("h4")
-    NameCharacterTitle.innerText = characterInformation.name
-    const WorldForCharacter = document.createElement("p")
-    WorldForCharacter.innerText = `Planeta: ${characterInformation.origin.name}`
-    const CurrentWorld = document.createElement("p")
-    CurrentWorld.innerText = `Localización: ${characterInformation.location.name}`
-
-    containerForText.appendChild(NameCharacterTitle)
-    containerForText.appendChild(WorldForCharacter)
-    containerForText.appendChild(CurrentWorld)
-
-    articleContainer.appendChild(imageElement)
-    articleContainer.appendChild(containerForText)
-
-
-    characterSection.appendChild(articleContainer)
-
-}
-
-getCharacterListFromApi("https://rickandmortyapi.com/api/character")
-
-// Cuando le damos click al boton de siguiente tenemos que hacer una nueva llamada a la API
-buttonNextHtmlElement.addEventListener("click", (event) => {
-    // Evitamos que haga una redirección (comportamiento normal del elemento <a>)
-    event.preventDefault();
-    
-    // Eliminamos el contenido que tenemos ahora (no nos interesa mantenerlos todos)
-    const characterSection = document.getElementById("root");
-    
-    // Usamos forEach en lugar de map para recorrer y eliminar los elementos
-    document.querySelectorAll(".character__section article").forEach((htmlElementArticle) => {
-        characterSection.removeChild(htmlElementArticle);
+    popupContainer.addEventListener("click", (event) => {
+        if (event.target === popupContainer) {
+            document.body.removeChild(popupContainer);
+        }
     });
+};
 
-    getCharacterListFromApi(event.target.href)
+const createResidentElement = (residentData) => {
+    const residentElement = document.createElement("div");
+    residentElement.classList.add("resident-element");
 
-});
+    const residentImage = document.createElement("img");
+    residentImage.src = residentData.image;
+    residentImage.alt = residentData.name;
 
-buttonPrevHtmlElement.addEventListener("click", (event) => {
-    // Evitamos que haga una redirección (comportamiento normal del elemento <a>)
-    event.preventDefault();
-    
-    // Eliminamos el contenido que tenemos ahora (no nos interesa mantenerlos todos)
-    const characterSection = document.getElementById("root");
-    
-    // Usamos forEach en lugar de map para recorrer y eliminar los elementos
-    document.querySelectorAll(".character__section article").forEach((htmlElementArticle) => {
-        characterSection.removeChild(htmlElementArticle);
-    });
+    const residentName = document.createElement("p");
+    residentName.innerText = residentData.name;
 
-    getCharacterListFromApi(event.target.href)
-
-});
+    residentElement.appendChild(residentImage);
+    residentElement.appendChild(residentName);
+    return residentElement;
+};

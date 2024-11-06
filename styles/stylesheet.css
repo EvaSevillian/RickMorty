@@ -1,5 +1,6 @@
 .header {
-  display: block;
+  display: flex;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
@@ -12,7 +13,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-left: 4rem;
-  padding-right: 18rem;
+  padding-right: 20rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
